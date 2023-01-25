@@ -189,10 +189,20 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+function ortalamaKelimeSayisi(orijinalTatlar){
+  let toplamKelimeSayisi = 0;
+  for (let i=0; i< orijinalTatlar.length; i++){
+    toplamKelimeSayisi += orijinalTatlar[i].split("").length;
+  }
+let ortKelimeSayisi= toplamKelimeSayisi / orijinalTatlar.length;
+if (ortKelimeSayisi< 0){
+  ortKelimeSayisi=0;
+  } else if (ortKelimeSayisi>2){
+    ortKelimeSayisi =2;
+  }
+  return ortKelimeSayisi
 }
-
+console.log(ortalamaKelimeSayisi(orijinalTatlar))
 
 /* ALIŞTIRMA 2:
 Firma mevcut tatların yanında artık mevsimlik lezzetler ve hatta bölgesel lezzetler de sunmaktadır. Toplam 25 lezzet aromasını
@@ -205,12 +215,57 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 
   Örneğin: rastgeleTatlar(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar) çalıştırıldığında ["Kestane", "Ballı Badem,"..."Hindistan Cevizi", "Kuru üzüm"].
 */
+const yeniTatlar = [
+   "Badem",
+     "Ballı Badem",
+     "Fıstık Ezmesi",
+     "Profiterol",
+     "Madlen Çikolata"
+   ]
+  
+   const mevsimlikTatlar = [
+   "Pekan",
+   "Kaju",
+   "Çikolatalı Mousse",
+   "Fransız Vanilyası",
+   "Yumurta",
+   "Alman çikolatası",
+   "Kek üzerine krema",
+   "Hindistan Cevizi",
+   "Kaymaklı Biskuvi",
+   "Beyaz Çikolata",
+   "Mango"
+   ]
+  
+   const bolgeselTatlar = [
+   "Kaymak",
+   "Karpuz",
+   "Karadut",
+   "Turunç",
+   "Portakal",
+   "Yogurt",
+   "Krem Peynir",
+   "Kakao",
+   "Karamel macchiato",
+   "Kuru üzüm",
+   "Peynir",
+   "Karamel"
+   ]
+  
+  
 
-
-function rastgeleTatlar(/*kod buraya*/){
-  /*kod buraya*/
+function rastgeleTatlar(orijinalTatlar,yeniTatlar,mevsimlikTatlar,bolgeselTatlar, itemValue){
+  
+  let tumTatlar= orijinalTatlar.concat (yeniTatlar, mevsimlikTatlar, bolgeselTatlar)
+  const rastgeleTatlar= [];
+  for (let i=0; i<itemValue; i++){
+    let randomIndex= Math.round(Math.random() * (tumTatlar.length-1));
+    rastgeleTatlar.push(tumTatlar[randomIndex]);
+    tumTatlar.splice(randomIndex,1)
+  }
+return rastgeleTatlar
 }
-
+console.log (rastgeleTatlar(orijinalTatlar,yeniTatlar, mevsimlikTatlar,bolgeselTatlar,100))
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
 // const yeniTatlar = [
 //   "Badem",
